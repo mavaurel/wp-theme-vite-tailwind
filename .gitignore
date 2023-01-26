@@ -1,3 +1,5 @@
 /node_modules
 /localhost.pem
 /localhost-key.pem
+.devcontainer/wp-app
+.devcontainer/wp-data

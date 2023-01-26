@@ -24,6 +24,7 @@ define('JS_LOAD_IN_FOOTER', true); // load scripts in footer?
 // deafult server address, port and entry point can be customized in vite.config.json
 define('VITE_SERVER', 'http://localhost:3000');
 define('VITE_ENTRY_POINT', '/main.js');
+define('VITE_CSS', '/assets/css/styles.css');
 
 // enqueue hook
 add_action( 'wp_enqueue_scripts', function() {
@@ -35,6 +36,10 @@ add_action( 'wp_enqueue_scripts', function() {
             echo '<script type="module" crossorigin src="' . VITE_SERVER . VITE_ENTRY_POINT . '"></script>';
         }
         add_action('wp_head', 'vite_head_module_hook');        
+        function vite_head_vite_css() {
+            echo '<link rel="stylesheet" id="style_fuoc" href="' . VITE_SERVER . VITE_CSS . '">';
+        }
+        add_action('wp_head', 'vite_head_vite_css');        
 
     } else {
 
