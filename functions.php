@@ -70,6 +70,8 @@ function remove_api()
     remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
     remove_action( 'wp_head', 'feed_links_extra', 3 );
     remove_action( 'wp_head', 'feed_links', 2 );
+    remove_action('init', 'register_block_core_gallery');
+
 }
 add_action('after_setup_theme', 'remove_api');
 

@@ -34,6 +34,9 @@ add_action( 'wp_enqueue_scripts', function() {
         // insert hmr into head for live reload
         function vite_head_module_hook() {
             echo '<script type="module" crossorigin src="' . VITE_SERVER . VITE_ENTRY_POINT . '"></script>';
+            echo '<script type="text/javascript">';
+            echo 'window.onload = function() {document.getElementById("style_fuoc").remove()};';
+            echo '</script>';
         }
         add_action('wp_head', 'vite_head_module_hook');        
         function vite_head_vite_css() {

@@ -1,1 +1,1 @@
-document.addEventListener("DOMContentLoaded",function(){console.log("js executed...")});
+document.addEventListener("DOMContentLoaded",function(){console.log("js executed...")});console.log("just loaded");window.onload=function(){console.log("loaded"),document.getElementById("style_fuoc").remove()};
