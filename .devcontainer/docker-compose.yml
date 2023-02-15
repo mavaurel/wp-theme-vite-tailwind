@@ -3,6 +3,7 @@ version: '3'
 services:
   wp:
     image: wordpress:latest # https://hub.docker.com/_/wordpress/
+
     ports:
       - ${IP}:80:80 # change ip if required
     volumes:
@@ -10,6 +11,7 @@ services:
       - ./wp-app:/var/www/html # Full wordpress project
       #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
       #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+      # - ../../press-wind:/var/www/html/wp-content/themes/vite-tailwind-theme
       - ../:/var/www/html/wp-content/themes/vite-tailwind-theme
 
     environment:
@@ -22,20 +24,20 @@ services:
     links:
       - db
 
-  wpcli:
-    image: wordpress:cli
-    volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-app:/var/www/html
+  # wpcli:
+  #   image: wordpress:cli
+  #   volumes:
+  #     - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+  #     - ./wp-app:/var/www/html
 
-    environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_NAME: "${DB_NAME}"
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: "$DB_ROOT_PASSWORD"
-    depends_on:
-      - db
-      - wp
+  #   environment:
+  #     WORDPRESS_DB_HOST: db
+  #     WORDPRESS_DB_NAME: "${DB_NAME}"
+  #     WORDPRESS_DB_USER: root
+  #     WORDPRESS_DB_PASSWORD: "$DB_ROOT_PASSWORD"
+  #   depends_on:
+  #     - db
+  #     - wp
 
   pma:
     image: phpmyadmin/phpmyadmin
